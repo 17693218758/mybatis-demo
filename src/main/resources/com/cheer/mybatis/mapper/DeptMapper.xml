@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace命名空间 就是接口的名字-->
+<mapper namespace="com.cheer.mybatis.mapper.DeptMapper">
+    <!--DeptEmp就是对应的方法名-->
+    <select id="getDept" resultType="Dept">
+        select * from dept where deptno = #{deptNo}
+    </select>
+
+    <!--如果接口返回值是实体类型，那么resultType就是实体类型；-->
+    <!--如果接口的返回值类型是list，那么resultType是list里所包含的类型-->
+    <select id="getList" resultType="Dept">
+            select * from dept
+    </select>
+
+    <insert id="insert">
+    INSERT INTO dept
+    VALUES(#{deptNo}, #{dName}, #{loc})
+    </insert>
+
+    <update id="update">
+    UPDATE dept
+    SET deptno =#{deptNo},dname = #{dName},loc = #{loc}
+    WHERE
+        deptno = #{deptNo}
+    </update>
+
+    <delete id="delete">
+            delete from dept where deptno = #{deptNo}
+    </delete>
+
+    <select id="getCount" resultType="int">
+            select count(*) from dept
+    </select>
+</mapper>
